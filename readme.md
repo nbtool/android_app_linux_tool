@@ -4,7 +4,7 @@ The project provides a Android APP command-line development environment based on
 
 You can directly write、build、install Android APP without using IDE.
 
-</br>
+
 #### 2. How to use
 
 Enter the root directory of an example (for example: HelloAndroid).
@@ -22,5 +22,5 @@ Install the APP:
 
 	make program
 	
-</br>
+
 **more：**[https://www.cnblogs.com/zjutlitao/p/9672376.html](https://www.cnblogs.com/zjutlitao/p/9672376.html)
