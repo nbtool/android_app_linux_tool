@@ -24,3 +24,9 @@ Install the APP:
 	
 
 **more：**[https://www.cnblogs.com/zjutlitao/p/9672376.html](https://www.cnblogs.com/zjutlitao/p/9672376.html)
+
+
+#### 3. Demos
+
+1) HelloAndroid: hello world demo
+2) BluetoorhScan: bluetooth scan + surface(canvas) + handler + bundle
