@@ -28,5 +28,6 @@ Install the APP:
 
 #### 3. Demos
 
-[01] HelloAndroid: 	hello world demo</br>
-[02] BluetoorhScan: 	bluetooth scan + surface(canvas) + handler + bundle</br>	
+[01] HelloAndroid: hello world demo</br>
+[02] BluetoorhScan: bluetooth scan + surface(canvas) + handler + bundle</br>	
+[03] FlyGame: surface(canvas) + fly game demo</br>
