@@ -26,7 +26,18 @@ Install the APP:
 **more：**[https://www.cnblogs.com/zjutlitao/p/9672376.html](https://www.cnblogs.com/zjutlitao/p/9672376.html)
 
 
-#### 3. Demos
+#### 3. Watch log
+
+Get all errors and fatals:
+
+	adb logcat "*:E"
+
+Use wildcard filter with Android Logcat (Linux only):
+
+	adb logcat | grep -i "foo.example." #get all logs related to “foo.example.*” tagname
+
+
+#### 4. Demos
 
 [[01] HelloAndroid: hello world demo][#1]    
 [[02] BluetoorhScan: bluetooth scan + surface(canvas) + handler + bundle][#2]    
