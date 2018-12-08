@@ -36,81 +36,35 @@ import android.os.Message;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.widget.TextView;
 
 
-public class MainActivity extends Activity implements Callback{
+public class MainActivity extends Activity{
 
-    private SurfaceView mSurface;
-    private SurfaceHolder mHolder;
     private BluetoothAdapter mBluetoothAdapter;
 
     private final static int REQUEST_ENABLE_BT = 1;
     //public static String UUID_SERVICE = "00010203-0405-0607-0809-0A0B0C0D1910";
     //private Message msg ;java.util.List
     //private Bundle bundle;
+    private TextView tv;
 
     private Vector<String> mDevicesNameVector;
     private Vector<String> mDevicesAddrVector;
     private Vector<Short>  mRSSIVector;
     private Vector<Paint>  mPaint;
     
-    //消息句柄(线程里无法进行界面更新，所以要把消息从线程里发送出来在消息句柄里进行处理)
-	public Handler myHandler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) 
-		{
-			Bundle bundle = msg.getData();
-			short now = bundle.getShort("msg");
-			Log.d("onGet",String.valueOf(now));
-			if (msg.what == 0x01) 
-			{
-				draw();
-			}
-			doDiscovery();
-		}
-		//画图像
-		private void draw() { 
-			Canvas canvas = mHolder.lockCanvas(); 
-			canvas.drawRGB(0, 0, 0);
-			
-			for(int i=(mRSSIVector.size() > 7 ? 7:mRSSIVector.size())-1;i>=0;i--)
-			{
-                int iRssi = Math.abs(mRSSIVector.get(i));
-				float power = (float) ((iRssi-59)/(10*2.0));
-				float dis=(float) Math.pow(10, power);
-
-                canvas.drawText(mDevicesAddrVector.get(i)+">>  RSSI: "+mRSSIVector.get(i).toString()+"  距离: "+ dis, 5, 12*i+12, mPaint.get(i));
-			    canvas.drawCircle(canvas.getWidth()/2, canvas.getHeight()/2,150+mRSSIVector.get(i), mPaint.get(0)); //画圆圈
-			}
-	        mHolder.unlockCanvasAndPost(canvas);// 更新屏幕显示内容  
-	        mRSSIVector.clear();
-	        mDevicesNameVector.clear();
-            mDevicesAddrVector.clear();
-	    } 
-	};
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        //msg = new Message();//消息
-		///bundle = new Bundle();
+        tv = (TextView) findViewById(R.id.tv1);
+        tv.append("ABsaddasddddddddddddddddddddddddddddddddddddddddddddddddddddasdasdasdC");
 
 		mDevicesNameVector=new Vector<String>();//向量
         mDevicesAddrVector= new Vector<String>();
 		mRSSIVector=new Vector<Short>();
-		mPaint=new Vector<Paint>();
-		Paint paint0 = new Paint();
-		paint0.setAntiAlias(true);
-		paint0.setStyle(Style.STROKE);
-	    paint0.setColor(Color.RED);
-	    mPaint.add(paint0);
-
-        mSurface=(SurfaceView)findViewById(R.id.surface);
-		mHolder = mSurface.getHolder();
-		mHolder.addCallback(this);
 
 		// Get the local Bluetooth adapter
         // Initializes Bluetooth adapter.
@@ -169,23 +123,4 @@ public class MainActivity extends Activity implements Callback{
                 });
             }
         };
-
-    @Override
-    public void surfaceCreated(SurfaceHolder holder) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width,
-            int height) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void surfaceDestroyed(SurfaceHolder holder) {
-        // TODO Auto-generated method stub
-
-    }
 }

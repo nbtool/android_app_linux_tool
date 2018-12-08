@@ -7,7 +7,7 @@
     <uses-permission a:name="android.permission.BLUETOOTH_ADMIN"/>
     <uses-feature a:name="android.hardware.bluetooth_le" a:required="true"/>
 
-    <application a:label='Tuya Mesh TestP'>
+    <application a:label='Tuya Mesh Test APP'>
         <activity a:name='com.example.helloandroid.MainActivity'>
              <intent-filter>
                 <category a:name='android.intent.category.LAUNCHER'/>
