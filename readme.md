@@ -9,7 +9,7 @@ You can directly write、build、install Android APP without using IDE.
 
 Enter the root directory of an example (for example: HelloAndroid).
 
-If it is the first time to compile, It is recommended to run `make tool` to download platform、SDK、build-tools etc.
+If it is the first time to compile, It is recommended to run `make tool` to download platform、SDK、build-tools etc（sometimes you should use sudo make tool）.
 
 	cd ./example/HelloAndroid
 	make tool
