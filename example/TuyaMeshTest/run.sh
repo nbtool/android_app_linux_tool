@@ -3,8 +3,8 @@
 set -e
 
 ANDROID_SDK_PATH="../../tool/android-sdk"
-BUILD_TOOLS_PATH=$ANDROID_SDK_PATH"/build-tools/26.0.1"
-PLATFORM_PATH=$ANDROID_SDK_PATH"/platforms/android-19"
+BUILD_TOOLS_PATH=$ANDROID_SDK_PATH"/build-tools/28.0.3"
+PLATFORM_PATH=$ANDROID_SDK_PATH"/platforms/android-28"
 TOOLS_PATH=$ANDROID_SDK_PATH"/tools"
 
 AAPT=$BUILD_TOOLS_PATH"/aapt"
@@ -68,8 +68,8 @@ function tool(){
 
     #install sdk build-tools platform
     echo "> install sdk build-tools platform...."
-    $SDKMANAGER "platform-tools" "platforms;android-19"
-    $SDKMANAGER "platform-tools" "build-tools;26.0.1" 
+    $SDKMANAGER "platform-tools" "platforms;android-28"
+    $SDKMANAGER "platform-tools" "build-tools;28.0.3" 
     $SDKMANAGER --list
 }
 
