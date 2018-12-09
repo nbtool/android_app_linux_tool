@@ -120,17 +120,20 @@ public class MainActivity extends Activity{
                             //mDevicesAddrVector.add(device.getAddress());
                             //mRSSIVector.add((short)rssi);
                             //Log.d("RSSI",device.getAddress() + " " + device.getName() + " " + String.valueOf(rssi));
-                            
+                           
+                            int name_len = scanRecord[3];
+                            if(name_len > 17)return;
+
                             Formatter formatter = new Formatter();
                             formatter.format("-----------------------------\r\n");
                             formatter.format("MAC:          %s\r\n", device.getAddress());
                             formatter.format("NAME:         %s\r\n", device.getName());
                             formatter.format("RSSI:         %d\r\n", rssi);
-                            formatter.format("BIG_KIND:     %02X\r\n", scanRecord[38]);
-                            formatter.format("SMALL_KIND:   %02X\r\n", scanRecord[37]);
-                            formatter.format("NODE_ID:      %02d\r\n", scanRecord[40]);
-                            formatter.format("PID:          %s\r\n", new String(scanRecord, 42, 8));
-                            formatter.format("VERSION:      %c.%c\r\n", scanRecord[50], scanRecord[51]);
+                            formatter.format("BIG_KIND:     %02X\r\n", scanRecord[21+name_len]);
+                            formatter.format("SMALL_KIND:   %02X\r\n", scanRecord[20+name_len]);
+                            formatter.format("NODE_ID:      %02d\r\n", scanRecord[23+name_len]);
+                            formatter.format("PID:          %s\r\n", new String(scanRecord, 25+name_len, 8));
+                            formatter.format("VERSION:      %c.%c\r\n", scanRecord[33+name_len], scanRecord[34+name_len]);
                             Log.d("RSSI",formatter.toString());
                             //tv.append(formatter.toString());
 
