@@ -15,6 +15,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.le.ScanFilter;
 import android.content.BroadcastReceiver;
+import android.text.method.ScrollingMovementMethod;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
@@ -25,6 +26,7 @@ import java.util.UUID;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.lang.Boolean;
+import java.util.Formatter;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -49,7 +51,7 @@ public class MainActivity extends Activity{
     //private Bundle bundle;
     private TextView tv;
 
-    private Vector<String> mDevicesNameVector;
+    private Vector<String> mDevicesInfoVector;
     private Vector<String> mDevicesAddrVector;
     private Vector<Short>  mRSSIVector;
     private Vector<Paint>  mPaint;
@@ -60,9 +62,9 @@ public class MainActivity extends Activity{
         setContentView(R.layout.activity_main);
 
         tv = (TextView) findViewById(R.id.tv1);
-        tv.append("ABsaddasddddddddddddddddddddddddddddddddddddddddddddddddddddasdasdasdC");
+        tv.setMovementMethod(ScrollingMovementMethod.getInstance());
 
-		mDevicesNameVector=new Vector<String>();//向量
+		mDevicesInfoVector=new Vector<String>();//向量
         mDevicesAddrVector= new Vector<String>();
 		mRSSIVector=new Vector<Short>();
 
@@ -114,10 +116,45 @@ public class MainActivity extends Activity{
                     @Override
                     public void run() {
                         if(device_filter(device)){
-                            mDevicesNameVector.add(device.getName());
-                            mDevicesAddrVector.add(device.getAddress());
-                            mRSSIVector.add((short)rssi);
-                            Log.d("RSSI",device.getAddress() + " " + device.getName() + " " + String.valueOf(rssi));
+                            //mDevicesNameVector.add(device.getName());
+                            //mDevicesAddrVector.add(device.getAddress());
+                            //mRSSIVector.add((short)rssi);
+                            //Log.d("RSSI",device.getAddress() + " " + device.getName() + " " + String.valueOf(rssi));
+                            
+                            Formatter formatter = new Formatter();
+                            formatter.format("-----------------------------\r\n");
+                            formatter.format("MAC:          %s\r\n", device.getAddress());
+                            formatter.format("NAME:         %s\r\n", device.getName());
+                            formatter.format("RSSI:         %d\r\n", rssi);
+                            formatter.format("BIG_KIND:     %02X\r\n", scanRecord[38]);
+                            formatter.format("SMALL_KIND:   %02X\r\n", scanRecord[37]);
+                            formatter.format("NODE_ID:      %02d\r\n", scanRecord[40]);
+                            formatter.format("PID:          %s\r\n", new String(scanRecord, 42, 8));
+                            formatter.format("VERSION:      %c.%c\r\n", scanRecord[50], scanRecord[51]);
+                            Log.d("RSSI",formatter.toString());
+                            //tv.append(formatter.toString());
+
+                            int index = mDevicesAddrVector.indexOf(device.getAddress());
+                            if(index == -1){//NEW
+                                mDevicesAddrVector.add(device.getAddress());
+                                mDevicesInfoVector.add(formatter.toString());
+                                Log.d("RSSI","XXXX -1");
+                            }else{//OLD
+                                mDevicesInfoVector.set(index,formatter.toString());
+                                Log.d("RSSI",String.valueOf(index));
+                            }
+                            
+                            tv.setText(mDevicesInfoVector.toString());
+
+
+                       
+
+                          
+                            //for (byte b : scanRecord) {
+                            //    formatter.format("%02x", b);
+                            //}
+                            //String hex = formatter.toString();
+                           // Log.d("RSSI",hex);
                         }
                     }
                 });
