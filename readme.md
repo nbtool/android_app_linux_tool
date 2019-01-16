@@ -42,10 +42,12 @@ Use wildcard filter with Android Logcat (Linux only):
 [[01] HelloAndroid: hello world demo][#1]    
 [[02] BluetoorhScan: bluetooth scan + surface(canvas) + handler + bundle][#2]    
 [[03] FlyGame: surface(canvas) + fly game demo][#3]     
-
+[[04] ListView: ListView DIY demo][#4]     
+[[05] GridView: GridView DIY demo][#4]     
 
 
 
 [#1]:https://www.cnblogs.com/zjutlitao/p/9672376.html
 [#2]:https://www.cnblogs.com/zjutlitao/p/4314096.html
 [#3]:https://www.cnblogs.com/zjutlitao/p/4233536.html
+[#4]:https://www.cnblogs.com/zjutlitao/p/4954385.html
