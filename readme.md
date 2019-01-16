@@ -44,6 +44,7 @@ Use wildcard filter with Android Logcat (Linux only):
 [[03] FlyGame: surface(canvas) + fly game demo][#3]     
 [[04] ListView: ListView DIY demo][#4]     
 [[05] GridView: GridView DIY demo][#4]     
+[[06] TuyaMeshTest: ble scan(fast scan) + textview][#5]    
 
 
 
@@ -51,3 +52,4 @@ Use wildcard filter with Android Logcat (Linux only):
 [#2]:https://www.cnblogs.com/zjutlitao/p/4314096.html
 [#3]:https://www.cnblogs.com/zjutlitao/p/4233536.html
 [#4]:https://www.cnblogs.com/zjutlitao/p/4954385.html
+[#5]:https://www.cnblogs.com/zjutlitao/p/10100212.html
