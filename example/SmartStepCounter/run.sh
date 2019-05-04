@@ -20,18 +20,21 @@ function build(){
     $AAPT package -f -m -J src -M AndroidManifest.xml -S res -I $PLATFORM
 
     echo "Compiling..."
-    javac -d obj -classpath src -bootclasspath $PLATFORM  src/com/example/helloandroid/*.java
+    javac -encoding GB2312 -d obj -classpath "src:libs/achartengine-1.1.0.jar" -bootclasspath $PLATFORM  src/com/beautifulzzzz/bluetooth/*.java 
+    javac -encoding GB2312 -d obj -classpath "src:libs/achartengine-1.1.0.jar" -bootclasspath $PLATFORM  src/com/beautifulzzzz/chart/*.java 
+    javac -encoding GB2312 -d obj -classpath "src:libs/achartengine-1.1.0.jar" -bootclasspath $PLATFORM  src/com/beautifulzzzz/Data/*.java 
+    javac -encoding GB2312 -d obj -classpath "src:libs/achartengine-1.1.0.jar" -bootclasspath $PLATFORM  src/com/example/third_test/*.java 
 
     echo "Translating in Dalvik bytecode..."
-    $DX --dex --output=classes.dex obj
+    $DX --dex --output=classes.dex  libs/*.jar obj
 
     echo "Making APK..."
-    $AAPT package -f -m -F bin/hello.unaligned.apk -M AndroidManifest.xml -S res -I $PLATFORM
-    $AAPT add bin/hello.unaligned.apk classes.dex
+    $AAPT package -f -m -F bin/output.unaligned.apk -M AndroidManifest.xml -S res -I $PLATFORM
+    $AAPT add bin/output.unaligned.apk classes.dex
 
     echo "Aligning and signing APK..."
-    $ZIPALIGN -f 4 bin/hello.unaligned.apk bin/hello.apk
-    $APKSIGNER sign --ks mykey.keystore bin/hello.apk
+    $ZIPALIGN -f 4 bin/output.unaligned.apk bin/SmartStepCounter.apk
+    $APKSIGNER sign --ks mykey.keystore bin/SmartStepCounter.apk
 }
 
 function clean(){
@@ -39,13 +42,13 @@ function clean(){
     rm -rf classes.dex
     rm -rf bin/*
     rm -rf obj/*
-    rm -rf src/com/example/helloandroid/R.java
+    rm -rf src/com/example/third_test/R.java
 }
 
 function program(){
 	echo "Launching..."
-	adb install -r bin/hello.apk
-	adb shell am start -n com.example.helloandroid/.MainActivity
+	adb install -r bin/SmartStepCounter.apk
+	adb shell am start -n com.example.third_test/.UI_Main
 }
 
 function tool(){
@@ -54,7 +57,7 @@ function tool(){
     mkdir -p obj
     mkdir -p libs
 
-   #export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
+#    export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
 
     if [ ! -d $ANDROID_SDK_PATH ]; then 
         #download tool
