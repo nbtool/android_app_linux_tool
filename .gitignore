@@ -1,2 +1,6 @@
 tool 
+bin
+classes.dex
+obj
+R.java
 

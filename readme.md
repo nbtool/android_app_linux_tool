@@ -45,7 +45,8 @@ Use wildcard filter with Android Logcat (Linux only):
 [[04] ListView: ListView DIY demo][#4]     
 [[05] GridView: GridView DIY demo][#4]     
 [[06] TuyaMeshTest: ble scan(fast scan) + textview][#5]    
-
+[[07] SmartStepCounter: bluetooth scan connect read + line chart][#6]    
+[[08] SmartFan: bluetooth scan connect write][#7]    
 
 
 [#1]:https://www.cnblogs.com/zjutlitao/p/9672376.html
@@ -53,3 +54,5 @@ Use wildcard filter with Android Logcat (Linux only):
 [#3]:https://www.cnblogs.com/zjutlitao/p/4233536.html
 [#4]:https://www.cnblogs.com/zjutlitao/p/4954385.html
 [#5]:https://www.cnblogs.com/zjutlitao/p/10100212.html
+[#7]:https://www.cnblogs.com/zjutlitao/p/4690228.html
+[#8]:https://www.cnblogs.com/zjutlitao/p/4640745.html
