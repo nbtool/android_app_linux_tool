@@ -5,6 +5,7 @@ import com.beautifulzzzz.bluetooth.BlueToothCommunicate;
 import com.beautifulzzzz.bluetooth.BlueToothConnect;
 import com.beautifulzzzz.bluetooth.BlueToothSearch;
 import com.beautifulzzzz.chart.ChartLine;
+import com.example.third_test.ListViewDialog;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -33,7 +34,8 @@ public class UI_Main extends Activity implements OnCheckedChangeListener {
 	public static DataPool mDataPool;
 
 	// 等待dialog
-	private ProgressDialog mProgressDialog;
+	//private ProgressDialog mProgressDialog;
+    private ListViewDialog mListViewDialog;
 
 	// 折线图类
 	private ChartLine mChartLine;
@@ -59,7 +61,7 @@ public class UI_Main extends Activity implements OnCheckedChangeListener {
 			case 0x00:
 				break;// 出现异常或为搜索到设备
 			case 0x01:
-				mProgressDialog.setTitle("进入尝试连接蓝牙设备阶段...");
+				//mProgressDialog.setTitle("进入尝试连接蓝牙设备阶段...");
 				// 当搜索完毕自动查找是否是我们的设备然后尝试连接
 				boolean isFind = false;
 				for (int i = 0; i < mBlueToothSearch.mNameVector.size(); i++) {
@@ -75,14 +77,14 @@ public class UI_Main extends Activity implements OnCheckedChangeListener {
 					}
 				}
 				if (isFind != true)
-					mProgressDialog.dismiss();// 等待窗口关闭
+					//mProgressDialog.dismiss();// 等待窗口关闭
 				break;// 搜索完毕
 			case 0x02:
-				mProgressDialog.setTitle("进入启动通信阶段...");
+				//mProgressDialog.setTitle("进入启动通信阶段...");
 				// 将上一步获得的socket传给蓝牙通信线程并启动线程监听数据
 				mBlueToothCommunicate.setSocket(mBlueToothConnect.mmSocket);
 				mBlueToothCommunicate.start();
-				mProgressDialog.dismiss();// 等待窗口关闭
+				//mProgressDialog.dismiss();// 等待窗口关闭
 				mNewSeries.setText("断开我的小手环");
 				break;// 连接完毕
 			case 0x03:
@@ -134,6 +136,8 @@ public class UI_Main extends Activity implements OnCheckedChangeListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ui_main);
+        
+        mListViewDialog = new ListViewDialog(this);
 
 		// 实例化蓝牙三剑客（搜索、连接、通信）
 		// myHandler是用来反馈信息的
@@ -167,8 +171,9 @@ public class UI_Main extends Activity implements OnCheckedChangeListener {
 				} else if (mNewSeries.getText().equals("连接我的小手环")) {
 					mBlueToothSearch.clearVector();
 					mBlueToothSearch.doDiscovery();
-					mProgressDialog = ProgressDialog.show(UI_Main.this,
-							"进入搜索蓝牙设备阶段...", "稍等一下~", true);
+					//mProgressDialog = ProgressDialog.show(UI_Main.this,
+				//			"进入搜索蓝牙设备阶段...", "稍等一下~", true);
+                    mListViewDialog.show();
 				} else {
 					if (mBlueToothConnect != null) {
 						mBlueToothConnect.cancel();
