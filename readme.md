@@ -54,5 +54,5 @@ Use wildcard filter with Android Logcat (Linux only):
 [#3]:https://www.cnblogs.com/zjutlitao/p/4233536.html
 [#4]:https://www.cnblogs.com/zjutlitao/p/4954385.html
 [#5]:https://www.cnblogs.com/zjutlitao/p/10100212.html
-[#7]:https://www.cnblogs.com/zjutlitao/p/4690228.html
-[#8]:https://www.cnblogs.com/zjutlitao/p/4640745.html
+[#6]:https://www.cnblogs.com/zjutlitao/p/4690228.html
+[#7]:https://www.cnblogs.com/zjutlitao/p/4640745.html
