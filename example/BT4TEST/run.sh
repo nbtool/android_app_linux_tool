@@ -20,19 +20,18 @@ function build(){
     $AAPT package -f -m -J src -M AndroidManifest.xml -S res -I $PLATFORM
 
     echo "Compiling..."
-    javac -encoding GB2312 -d obj -classpath src -bootclasspath $PLATFORM  src/com/beautifulzzzz/bluetooth/*.java 
-    javac -encoding GB2312 -d obj -classpath src -bootclasspath $PLATFORM  src/com/example/second_test/*.java 
+    javac -d obj -classpath "src:libs/android-support-v4.jar" -bootclasspath $PLATFORM  src/com/example/bt4test/*.java 
 
     echo "Translating in Dalvik bytecode..."
-    $DX --dex --output=classes.dex obj
+    $DX --dex --output=classes.dex  libs/*.jar obj
 
     echo "Making APK..."
     $AAPT package -f -m -F bin/output.unaligned.apk -M AndroidManifest.xml -S res -I $PLATFORM
     $AAPT add bin/output.unaligned.apk classes.dex
 
     echo "Aligning and signing APK..."
-    $ZIPALIGN -f 4 bin/output.unaligned.apk bin/SmartFan.apk
-    $APKSIGNER sign --ks mykey.keystore bin/SmartFan.apk
+    $ZIPALIGN -f 4 bin/output.unaligned.apk bin/BT4TEST.apk
+    $APKSIGNER sign --ks mykey.keystore bin/BT4TEST.apk
 }
 
 function clean(){
@@ -40,13 +39,13 @@ function clean(){
     rm -rf classes.dex
     rm -rf bin/*
     rm -rf obj/*
-    rm -rf src/com/example/second_test/R.java
+    rm -rf src/com/example/third_test/R.java
 }
 
 function program(){
 	echo "Launching..."
-	adb install -r bin/SmartFan.apk
-	adb shell am start -n com.example.second_test/.UI_Main
+	adb install -r bin/BT4TEST.apk
+	adb shell am start -n com.example.bt4test/.MainActivity
 }
 
 function tool(){
@@ -55,7 +54,7 @@ function tool(){
     mkdir -p obj
     mkdir -p libs
 
-    export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
+#    export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
 
     if [ ! -d $ANDROID_SDK_PATH ]; then 
         #download tool
