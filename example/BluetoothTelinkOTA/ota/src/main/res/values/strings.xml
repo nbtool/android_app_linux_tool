@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">OTA_SDK310</string>
+    <string name="menu_scan">scan</string>
+    <string name="menu_stop">stop</string>
+    <string name="menu_connect">connect</string>
+    <string name="menu_disconnect">disconnect</string>
+
+    <string name="state_connected">connected</string>
+    <string name="state_connecting">connecting</string>
+    <string name="state_disconnected">disconnected</string>
+
+    <string name="listen_enable">Listen for notifications</string>
+    <string name="listen_disable">Stop listen</string>
+</resources>
