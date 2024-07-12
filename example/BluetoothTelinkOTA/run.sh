@@ -64,7 +64,7 @@ function tool(){
     if [ ! -d $GRADLE_PATH ];then
         #download gredle
         echo "> download gredle..."
-        wget https://downloads.gradle-dn.com/distributions/gradle-$GRADLE_VERSION-bin.zip 
+        wget https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip 
         unzip gradle-$GRADLE_VERSION-bin.zip -d $TOOL_PATH/gradle
         rm -rf gradle-$GRADLE_VERSION-bin.zip 
     fi

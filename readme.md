@@ -47,7 +47,9 @@ Use wildcard filter with Android Logcat (Linux only):
 [[06] TuyaMeshTest: ble scan(fast scan) + textview][#5]    
 [[07] SmartStepCounter: bluetooth scan connect read + line chart][#6]    
 [[08] SmartFan: bluetooth scan connect write][#7]    
-
+[[09] BluetoothTelinkOTA: telink ota][#9]    
+[[10] BluetoothDemo: 可以编译，功能不行][#10]   
+[[11] BT4TEST: ble scan list][#11]    
 
 [#1]:https://www.cnblogs.com/zjutlitao/p/9672376.html
 [#2]:https://www.cnblogs.com/zjutlitao/p/4314096.html
@@ -56,3 +58,6 @@ Use wildcard filter with Android Logcat (Linux only):
 [#5]:https://www.cnblogs.com/zjutlitao/p/10100212.html
 [#6]:https://www.cnblogs.com/zjutlitao/p/4690228.html
 [#7]:https://www.cnblogs.com/zjutlitao/p/4640745.html
+[#9]:./example/BluetoothTelinkOTA/readme.md
+[#10]:./example/BluetoothDemo/readme.md
+[#11]:./example/BT4TEST/readme.md

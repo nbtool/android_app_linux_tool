@@ -55,7 +55,7 @@ function tool(){
     mkdir -p obj
     mkdir -p libs
 
-    export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
+    #export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
 
     if [ ! -d $ANDROID_SDK_PATH ]; then 
         #download tool
